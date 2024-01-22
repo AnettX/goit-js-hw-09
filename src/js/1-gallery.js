@@ -1,6 +1,6 @@
 import SimpleLightbox from 'simplelightbox';
 console.log(SimpleLightbox);
-
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 
 const images = [
@@ -100,6 +100,15 @@ elem.append(...result);
 console.log(elem);
 
 
+// Опції для SimpleLightbox, включаючи затримку перед відображенням підпису
+const options = {
+    captionDelay: 250, // Затримка в мілісекундах
+};
+
+
+// Створюємо екземпляр SimpleLightbox з опціями
+let gallery = new SimpleLightbox('.gallery a', options);
+
 //Method-1
     // var lightbox = new SimpleLightbox('.gallery a', {  /* options */ });
     // function onElemClick(e) {
@@ -109,17 +118,18 @@ console.log(elem);
     // }
 
 
-
 // Method-2
-let gallery = new SimpleLightbox('.gallery a');
-gallery.on('show.simplelightbox', function () {
-	 if (e.target.nodeName === "IMG") {
-         e.preventDefault();//зупиняє дію браузера за замовчуванням - скачування картинки при кліку на неї;
+// let gallery = new SimpleLightbox('.gallery a');
+// gallery.on('show.simplelightbox', function () {
+// 	 if (e.target.nodeName === "IMG") {
+//          e.preventDefault();//зупиняє дію браузера за замовчуванням - скачування картинки при кліку на неї;
         
-    }
-});
+//     }
+// });
 
 // default = fadeSpeed = 300 => 250; ???HOW TO CHANGE???
+
+
 
 
 

@@ -1,0 +1,19 @@
+.js-feedback-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+label {
+  order: -1; /* Переміщує Email вгору */
+}
+
+textarea {
+  order: 1; /* Переміщує Message вниз */
+}
+
+button {
+  order: 2; /* Переміщує Submit вниз */
+}
