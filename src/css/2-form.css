@@ -1,19 +1,60 @@
-.js-feedback-form {
+.feedback-form {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 408px;
+  font-size: 16px;
+  margin: 0 auto;
+  line-height: 1.5em;
+  letter-spacing: 0.04em;
+  padding: 24px;
   gap: 8px;
 }
 
-label {
-  order: -1; /* Переміщує Email вгору */
+.feedback-form input {
+  height: 40px;
 }
 
-textarea {
-  order: 1; /* Переміщує Message вниз */
+.feedback-form textarea {
+  height: 80px;
 }
 
-button {
-  order: 2; /* Переміщує Submit вниз */
+.feedback-form input,
+.feedback-form textarea {
+  width: 360px;
+  padding: 8px 16px;
+  margin-top: 8px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  outline: 0;
+}
+
+.feedback-form button {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5em;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  background: #4e75ff;
+  border: none;
+  width: 111px;
+  height: 40px;
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.feedback-form input:hover,
+.feedback-form textarea:hover {
+  border: 1px solid #000000;
+}
+
+.feedback-form button:hover {
+  background: #6c8cff;
 }
