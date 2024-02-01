@@ -69,8 +69,6 @@ const images = [
   },
 ];
 
-
-
 // Розмітка елементів галереї
 
 const elem = document.querySelector('.gallery');
@@ -85,7 +83,6 @@ const result = images.map((image) => {
     imgElem.classList.add("gallery-image");
     imgElem.src = image.preview;
     imgElem.alt = image.description;
-    imgElem.title = imgElem.alt;
 
     linkElem.classList.add("gallery-link");
     linkElem.href = image.original;
@@ -102,34 +99,12 @@ console.log(elem);
 
 // Опції для SimpleLightbox, включаючи затримку перед відображенням підпису
 const options = {
+  captionsData: 'alt',
     captionDelay: 250, // Затримка в мілісекундах
 };
 
-
 // Створюємо екземпляр SimpleLightbox з опціями
 let gallery = new SimpleLightbox('.gallery a', options);
-
-//Method-1
-    // var lightbox = new SimpleLightbox('.gallery a', {  /* options */ });
-    // function onElemClick(e) {
-    //     if (e.target.nodeName === "IMG") {
-    //         e.preventDefault(); //зупиняє дію браузера за замовчуванням - скачування картинки при кліку на неї;
-    //     }
-    // }
-
-
-// Method-2
-// let gallery = new SimpleLightbox('.gallery a');
-// gallery.on('show.simplelightbox', function () {
-// 	 if (e.target.nodeName === "IMG") {
-//          e.preventDefault();//зупиняє дію браузера за замовчуванням - скачування картинки при кліку на неї;
-        
-//     }
-// });
-
-// default = fadeSpeed = 300 => 250; ???HOW TO CHANGE???
-
-
 
 
 

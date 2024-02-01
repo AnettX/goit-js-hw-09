@@ -9,15 +9,15 @@
 const STORAGE_KEY = 'feedback-msg';
 
 const form = document.querySelector('.js-feedback-form');
-const texarea = form.querySelector('texarea');
+const texarea = form.querySelector('.message');
 
 form.addEventListener('input', (e) => {
     const userEmail = form.elements.email.value;
     const userMessage = form.elements.message.value;
     
     const data = {
-        email: userEmail,
-        message: userMessage,
+        email: userEmail.trim(),
+        message: userMessage.trim(),
     }
 
     saveToLS(STORAGE_KEY, data);
@@ -32,6 +32,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = loadFromLS(STORAGE_KEY) || {};
     form.reset();
+    window.localStorage.clear();
     console.log(data);
 })
 
