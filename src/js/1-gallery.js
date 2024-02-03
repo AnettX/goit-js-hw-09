@@ -1,5 +1,4 @@
 import SimpleLightbox from 'simplelightbox';
-console.log(SimpleLightbox);
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 
@@ -74,27 +73,16 @@ const images = [
 const elem = document.querySelector('.gallery');
 
 const result = images.map((image) => {
-    const liElem = document.createElement('li');
-    const linkElem = document.createElement('a');
-    const imgElem = document.createElement('img');
-    
-    liElem.classList.add("gallery-item");
+       return `
+      <li class="gallery-item">
+        <a class="gallery-link" href="${image.original}">
+          <img class="gallery-image" src="${image.preview}" alt="${image.description}">
+        </a>
+      </li>`
 
-    imgElem.classList.add("gallery-image");
-    imgElem.src = image.preview;
-    imgElem.alt = image.description;
-
-    linkElem.classList.add("gallery-link");
-    linkElem.href = image.original;
-
-    liElem.appendChild(linkElem);
-    linkElem.appendChild(imgElem);
-    return liElem;
 })
 
-elem.append(...result);
-
-console.log(elem);
+elem.insertAdjacentHTML('beforeend', result);
 
 
 // Опції для SimpleLightbox, включаючи затримку перед відображенням підпису

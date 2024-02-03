@@ -9,33 +9,45 @@
 const STORAGE_KEY = 'feedback-msg';
 
 const form = document.querySelector('.js-feedback-form');
-const texarea = form.querySelector('.message');
 
 form.addEventListener('input', (e) => {
-    const userEmail = form.elements.email.value;
-    const userMessage = form.elements.message.value;
-    
-    const data = {
-        email: userEmail.trim(),
-        message: userMessage.trim(),
-    }
-
-    saveToLS(STORAGE_KEY, data);
+    validateAndSaveToLS();
 });
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+     if (isFormValid()) {
+        const data = loadFromLS(STORAGE_KEY) || {};
+        form.reset();
+        localStorage.removeItem(STORAGE_KEY);
+        console.log(data);
+    } else {
+        console.log('Потрібно заповнити всі поля');
+    }
+});
+
+function validateAndSaveToLS() {
+    const userEmail = form.elements.email.value.trim();
+    const userMessage = form.elements.message.value.trim();
+
+    if (userEmail || userMessage) {
+        const data = { email: userEmail, message: userMessage };
+        saveToLS(STORAGE_KEY, data);
+    }
+}
+
+function isFormValid() {
+    const userEmail = form.elements.email.value.trim();
+    const userMessage = form.elements.message.value.trim();
+
+    return userEmail && userMessage;
+}
 
 function saveToLS(key = 'empty', value = '') {
     const jsonData = JSON.stringify(value);
     localStorage.setItem(key, jsonData);
 }
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = loadFromLS(STORAGE_KEY) || {};
-    form.reset();
-    window.localStorage.clear();
-    console.log(data);
-})
-
 
 function loadFromLS(key) {
     const data = localStorage.getItem(key);
